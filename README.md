@@ -1,10 +1,6 @@
-[![Build Status](https://travis-ci.org/melexis/mlx90632-library.svg?branch=master)](https://travis-ci.org/melexis/mlx90632-library)
-[![Coverage Status](https://coveralls.io/repos/github/melexis/mlx90632-library/badge.svg?branch=master)](https://coveralls.io/github/melexis/mlx90632-library?branch=master)
-![Uncrustify](https://img.shields.io/badge/uncrustify-pass-brightgreen.svg)
-[![Coverity Scan](https://img.shields.io/coverity/scan/14522.svg)](https://scan.coverity.com/projects/melexis-mlx90632-library)
 [![Documentation](https://img.shields.io/badge/Documentation-published-brightgreen.svg)](https://melexis.github.io/mlx90632-library/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
-[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/melexis/mlx90632-library/issues)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/melexis/mlx90632-example/issues)
 
 This example shows how the MLX90632 library is implemented for a specific MCU that is connected to the MLX90632 sensor. 
 The mapping for this MCU is done using the software STMCubeMX. 
@@ -12,7 +8,9 @@ All functions that need to be implemented for this individual MCU are listed in 
 
 # Documentation
 Compiled documentation is available on [melexis.github.io/mlx90632-library](https://melexis.github.io/mlx90632-library/).
+
 Datasheet is available in [Melexis documentation](https://www.melexis.com/en/documents/documentation/datasheets/datasheet-mlx90632).
+
 MCU documentation is available on [STM32F070](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f070rb.html)
 
 # Software
@@ -34,25 +32,23 @@ External components
 
 # Getting started
 Open STM32CubeMX and create a "New Project" with the wizard.
+
 Select the correct MCU (SMT32F070RB) and "Start Project".
+
 Make sure "I2C1" is enabled.
+
 In the Configuration tab, the I2C clock frequency can be changed.
+
 For this example, Fast mode is selected and "Primary Address Length selection" is set to "7-bit".
+
 Next, generate the code and make sure to select "MDK-ARM V5" in "Toolchain / IDE".
+
 Code will now be generated and opened in ARM Keil uVision.
 
-From this point you can include the [library](https://github.com/melexis/mlx90632-library) to your project in the IDE.
-The main.c file shows an example of the complete implementation and calls all functions in order to have a correct reading
-of the ambient en object temperature of the MLX90632 sensor.
 
-# Dependencies for library unit-testing
-Because of increased functionality and code size unit test, mocking and building
-framework [Ceedling](http://www.throwtheswitch.org/ceedling/) was picked to ease
-and validate development. It is an established open-source framework that brings
-in additional dependency to ruby and rake (see `.gitlab-ci` file), but it allowed
-faster development with automatic mocking ([CMock](http://www.throwtheswitch.org/cmock/))
-and wider range of unit test macros ([Unity](http://www.throwtheswitch.org/unity/)).
-Because of it, cloning repository requires adding a `--recursive` flag
-(so `git clone --recursive <url> <destination>`) or initialization of submodules
-afterwards using `git submodule update --init --recursive`. 
+From this point you can include the [library](https://github.com/melexis/mlx90632-library) to your project in the IDE.
+
+The main.c file shows an example of the complete implementation and calls all functions in order to have a correct reading
+
+of the ambient en object temperature of the MLX90632 sensor.
 
