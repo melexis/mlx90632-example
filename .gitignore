@@ -1,0 +1,15 @@
+*.o
+*.d
+*.crf
+*.sct
+*.lnp
+*.iex
+*.dep
+*.htm
+*.elf
+*.lss
+*.map
+
+*.ioc
+.mxproject
+mx.scratch
