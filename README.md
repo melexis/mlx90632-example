@@ -47,7 +47,8 @@ Code will now be generated and opened in ARM Keil uVision.
 
 
 From this point you can include the [library](https://github.com/melexis/mlx90632-library) to your project in the IDE.
-- `git clone <url>`
+- `git clone <url> mlx90632-example`
+- `cd mlx90632-example`
 - `git submodule --init`
 - Make sure to define the "BITS_PER_LONG = 32" as a compiler flag (-D)
 - Include the path: "..\Library\inc"
