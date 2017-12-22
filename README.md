@@ -11,7 +11,7 @@ Compiled documentation is available on [melexis.github.io/mlx90632-library](http
 
 Datasheet is available in [Melexis documentation](https://www.melexis.com/en/documents/documentation/datasheets/datasheet-mlx90632).
 
-MCU documentation is available on [STM32F070](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f070rb.html)
+MCU documentation is available on [STM32F070](http://www.st.com/content/st_com/en/products/evaluation-tools/product-evaluation-tools/mcu-eval-tools/stm32-mcu-eval-tools/stm32-mcu-nucleo/nucleo-f070rb.html).
 
 # Software
 Tool for STM32 configuration [STM32CubeMX](http://www.st.com/content/st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-configurators-and-code-generators/stm32cubemx.html)
@@ -47,6 +47,8 @@ Code will now be generated and opened in ARM Keil uVision.
 
 
 From this point you can include the [library](https://github.com/melexis/mlx90632-library) to your project in the IDE.
+- `git clone <url>`
+- `git submodule --init`
 - Make sure to define the "BITS_PER_LONG = 32" as a compiler flag (-D)
 - Include the path: "..\Library\inc"
 
