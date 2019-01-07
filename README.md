@@ -26,7 +26,9 @@ IDE [ARM Keil uVision 5](https://www.keil.com/demo/eval/arm.htm)
 | pin 4: SCL      | CN10: pin 17: PB6      |
 | pin 5: ADDR     | CN7:  pin 20: GND      |
 
-External components
+
+## External components
+
 - Capacitor of 10nF on VDD and GND (maximum 1cm from MLX90632 sensor)
 - Pull-up resistors on SDA and SCL of 4k7
 
@@ -54,6 +56,5 @@ From this point you can include the [library](https://github.com/melexis/mlx9063
 - Include the path: "..\Library\inc"
 
 The main.c file shows an example of the complete implementation and calls all functions in order to have a correct reading
-
-of the ambient en object temperature of the MLX90632 sensor.
+of the ambient and object temperature with the MLX90632 sensor.
 
