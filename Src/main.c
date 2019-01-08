@@ -54,7 +54,7 @@ int32_t mlx90632_i2c_read(int16_t register_address, uint16_t *value)
 
 /* Implementation of I2C read for 32-bit values */
 int32_t mlx90632_i2c_read32(int16_t register_address, uint32_t *value)
-{	
+{
 	uint8_t data[4];
 	int32_t ret;
 	ret = HAL_I2C_Mem_Read(&hi2c1, CHIP_ADDRESS, register_address, 2, data, sizeof(data), 100);
@@ -80,40 +80,40 @@ static int mlx90632_read_eeprom(int32_t *PR, int32_t *PG, int32_t *PO, int32_t *
 		return ret;
 	ret = mlx90632_i2c_read32(MLX90632_EE_P_G, (uint32_t *) PG);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read32(MLX90632_EE_P_O, (uint32_t *) PO);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read32(MLX90632_EE_P_T, (uint32_t *) PT);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read32(MLX90632_EE_Ea, (uint32_t *) Ea);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read32(MLX90632_EE_Eb, (uint32_t *) Eb);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read32(MLX90632_EE_Fa, (uint32_t *) Fa);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read32(MLX90632_EE_Fb, (uint32_t *) Fb);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read32(MLX90632_EE_Ga, (uint32_t *) Ga);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read(MLX90632_EE_Gb, (uint16_t *) Gb);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read(MLX90632_EE_Ha, (uint16_t *) Ha);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read(MLX90632_EE_Hb, (uint16_t *) Hb);
 	if(ret < 0)
-			return ret;
+		return ret;
 	ret = mlx90632_i2c_read(MLX90632_EE_Ka, (uint16_t *) Ka);
 	if(ret < 0)
-			return ret;
+		return ret;
 	return 0;
 }
 
@@ -125,23 +125,23 @@ double pre_ambient, pre_object, ambient, object;
 
 int main(void)
 {
-  /* MCU Configuration----------------------------------------------------------*/
+	/* MCU Configuration----------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	HAL_Init();
 
-  /* Configure the system clock */
-  SystemClock_Config();
+	/* Configure the system clock */
+	SystemClock_Config();
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_I2C1_Init();
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
+	MX_I2C1_Init();
 
-  /* Check the internal version and prepare a clean start */
+	/* Check the internal version and prepare a clean start */
 	mlx90632_init();
 
-  /* Definition of MLX90632 calibration parameters */
-	int16_t ambient_new_raw; 
+	/* Definition of MLX90632 calibration parameters */
+	int16_t ambient_new_raw;
 	int16_t ambient_old_raw;
 	int16_t object_new_raw;
 	int16_t object_old_raw;
@@ -158,11 +158,11 @@ int main(void)
 	int16_t Hb = 0;
 	int16_t Gb = 9728;
 	int16_t Ka = 10752;
-	
+
 	/* Read EEPROM calibration parameters */
 	mlx90632_read_eeprom(&PR, &PG, &PO, &PT, &Ea, &Eb, &Fa, &Fb, &Ga, &Gb, &Ha, &Hb, &Ka);
-  while (1)
-  {
+	while (1)
+	{
 		/* Get raw data from MLX90632 */
 		mlx90632_read_temp_raw(&ambient_new_raw, &ambient_old_raw, &object_new_raw, &object_old_raw);
 		/* Pre-calculations for ambient and object temperature calculation */
@@ -173,7 +173,7 @@ int main(void)
 		/* Calculate ambient and object temperature */
 		ambient = mlx90632_calc_temp_ambient(ambient_new_raw, ambient_old_raw, PT, PR, PG, PO, Gb);
 		object = mlx90632_calc_temp_object(pre_object, pre_ambient, Ea, Eb, Ga, Fa, Fb, Ha, Hb);
-  }
+	}
 }
 
 /** System Clock Configuration
@@ -184,7 +184,7 @@ void SystemClock_Config(void)
   RCC_ClkInitTypeDef RCC_ClkInitStruct;
   RCC_PeriphCLKInitTypeDef PeriphClkInit;
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+    /**Initializes the CPU, AHB and APB busses clocks
     */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
@@ -195,7 +195,7 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Initializes the CPU, AHB and APB busses clocks 
+    /**Initializes the CPU, AHB and APB busses clocks
     */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1;
@@ -215,11 +215,11 @@ void SystemClock_Config(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure the Systick interrupt time 
+    /**Configure the Systick interrupt time
     */
   HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
 
-    /**Configure the Systick 
+    /**Configure the Systick
     */
   HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
 
@@ -244,14 +244,14 @@ static void MX_I2C1_Init(void)
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure Analogue filter 
+    /**Configure Analogue filter
     */
   if (HAL_I2CEx_ConfigAnalogFilter(&hi2c1, I2C_ANALOGFILTER_ENABLE) != HAL_OK)
   {
     _Error_Handler(__FILE__, __LINE__);
   }
 
-    /**Configure Digital filter 
+    /**Configure Digital filter
     */
   if (HAL_I2CEx_ConfigDigitalFilter(&hi2c1, 0) != HAL_OK)
   {
@@ -278,10 +278,10 @@ void _Error_Handler(char * file, int line)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
-  while(1) 
+  while(1)
   {
   }
-  /* USER CODE END Error_Handler_Debug */ 
+  /* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef USE_FULL_ASSERT
