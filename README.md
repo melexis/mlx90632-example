@@ -30,19 +30,20 @@ IDE [ARM Keil uVision 5](https://www.keil.com/demo/eval/arm.htm)
 
 
 # Hardware connections
-| MLX90632        |stm32f4discovery        |
-| --------------- |:----------------------:| 
-| pin 1: SDA      | p2:  pin 20: PB9      | 
-| pin 2: VDD      | p2:  pin 6: +3V3      |
-| pin 3: GND      | p2:  pin 2 : GND      |
-| pin 4: SCL      | p2: pin 23: PB6       |
-| pin 5: ADDR     | p2:  pin 1: GND       |
+| MLX90632        |STM32F4 Discovery       |
+| --------------- | ---------------------- | 
+| pin 1: SDA      | p2:  pin 20: PB9       | 
+| pin 2: VDD      | p2:  pin 6: +3V3       |
+| pin 3: GND      | p2:  pin 2 : GND       |
+| pin 4: SCL      | p2: pin 23: PB6        |
+| pin 5: ADDR     | p2:  pin 1: GND        |
 
-
-## External components
+## External components STM32F070
 
 - Capacitor of 10nF on VDD and GND (maximum 1cm from MLX90632 sensor)
 - Pull-up resistors on SDA and SCL of 4k7
+## External components STM32F4Discovery
+  -  PB7 ------> I2C1_SDA internal not enough Resistor need replace to PB9
 
 # Getting started
 Open STM32CubeMX and create a "New Project" with the wizard.
